@@ -18,6 +18,8 @@ const expect = Code.expect;
 // Test DB
 const host = process.env.MYSQL_HOST || '127.0.0.1';
 const port = process.env.MYSQL_PORT || '3306';
+const user = process.env.MYSQL_USER || 'root';
+const password = process.env.MYSQL_PASSWORD || '';
 
 lab.suite('@fredguile/hapi-sequelize', () => {
 
@@ -26,7 +28,7 @@ lab.suite('@fredguile/hapi-sequelize', () => {
     const server = new Hapi.Server();
     server.connection();
 
-    const sequelize = new Sequelize('shop', 'root', '', {
+    const sequelize = new Sequelize('shop', user, password, {
       host,
       port,
       dialect: 'mysql'
@@ -69,7 +71,7 @@ lab.suite('@fredguile/hapi-sequelize', () => {
     const server = new Hapi.Server();
     server.connection();
 
-    const sequelize = new Sequelize('shop', 'root', '', {
+    const sequelize = new Sequelize('shop', user, password, {
       host,
       port,
       dialect: 'mysql'
