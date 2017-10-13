@@ -10,10 +10,12 @@
 This version of hapi-sequelize should be compatible with at least Hapi 13+ & Sequelize 3.x. If you're
 encountering an issue related to any specific version please open an issue. The rewrite of this plugin
  (3.x) has simplified things and made the plugin a bit more flexible. 
+
+**UDPATE: I managed to bump versions to support Sequelize 4.x.**
  
 ### Installation
 
-`npm install --save hapi-sequelize`
+`npm install --save @fredguile/hapi-sequelize`
 
 ### Configuration
 
