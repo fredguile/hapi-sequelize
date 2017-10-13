@@ -1,8 +1,8 @@
 ## hapi-sequelize - a hapi plugin for the sequelize orm
 
-[![Build Status](https://travis-ci.org/danecando/hapi-sequelize.svg?branch=master)](https://travis-ci.org/danecando/hapi-sequelize)
-[![Coverage Status](https://coveralls.io/repos/github/danecando/hapi-sequelize/badge.svg)](https://coveralls.io/github/danecando/hapi-sequelize)
-[![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/hapi-sequelize)
+[![Build Status](https://travis-ci.org/fredguile/hapi-sequelize.svg?branch=master)](https://travis-ci.org/fredguile/hapi-sequelize)
+[![Coverage Status](https://coveralls.io/repos/github/fredguile/hapi-sequelize/badge.svg)](https://coveralls.io/github/fredguile/hapi-sequelize)
+[![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/@fredguile/hapi-sequelize)
 
 
 ### Warning
@@ -11,7 +11,7 @@ This version of hapi-sequelize should be compatible with at least Hapi 13+ & Seq
 encountering an issue related to any specific version please open an issue. The rewrite of this plugin
  (3.x) has simplified things and made the plugin a bit more flexible. 
 
-**UDPATE: I managed to bump versions to support Sequelize 4.x.**
+**UDPATE: I've bumped versions to support Sequelize 4.x.**
  
 ### Installation
 
