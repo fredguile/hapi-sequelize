@@ -66,7 +66,7 @@ DB instance in a route handler. If you have multiple registrations pass the name
 you would like returned or else the single or first registration will be returned.
 
 ```javascript
-handler(request, reply) {
+handler(request, h) {
   const db1 = request.getDb('db1');
   console.log(db1.sequelize);
   console.log(db1.models);
