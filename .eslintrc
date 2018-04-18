@@ -1,7 +1,7 @@
 {
   "extends": ["eslint:recommended"],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2017,
     "sourceType": "module"
   },
   "rules": {
@@ -9,10 +9,7 @@
     "padded-blocks": 0
   },
   "env": {
-    "es6": true,
-    "node": true
-  },
-  "globals": {
-
+    "node": true,
+    "es6": true
   }
 }

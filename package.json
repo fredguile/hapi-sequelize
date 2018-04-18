@@ -1,6 +1,6 @@
 {
   "name": "@fredguile/hapi-sequelize",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "A Hapi plugin for the fabulous Sequelize ORM",
   "main": "lib/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/danecando/hapi-sequelize.git"
+    "url": "https://github.com/fredguile/hapi-sequelize.git"
   },
   "keywords": [
     "sequelize",
@@ -27,26 +27,27 @@
     "javascript"
   ],
   "author": "Dane Grant",
+  "contributors": ["Fred Ghilini <fredguile@gmail.com>"],
   "license": "MIT",
   "dependencies": {
     "glob": "^7.0.3",
-    "joi": "^11.3.4"
+    "joi": "^13.2.0"
   },
   "devDependencies": {
-    "code": "^4.0.0",
-    "coveralls": "^2.11.14",
-    "eslint": "^3.7.1",
-    "hapi": "^16.6.2",
-    "lab": "^14.1.1",
-    "mysql2": "^1.4.2",
-    "sequelize": "^4.13.10",
-    "sinon": "^2.3.8"
+    "code": "^5.2.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.19.1",
+    "hapi": "^17.3.1",
+    "lab": "^15.4.1",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.6",
+    "sinon": "^4.5.0"
   },
   "peerDependencies": {
-    "hapi": "^16.5.0",
+    "hapi": "^17.0.0",
     "sequelize": "^4.x"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=8.9.0"
   }
 }
