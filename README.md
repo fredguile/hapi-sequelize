@@ -5,13 +5,10 @@
 [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/@fredguile/hapi-sequelize)
 
 
-### Warning
+### Important infos
 
-This version of hapi-sequelize should be compatible with at least Hapi 13+ & Sequelize 3.x. If you're
-encountering an issue related to any specific version please open an issue. The rewrite of this plugin
- (3.x) has simplified things and made the plugin a bit more flexible. 
-
-**UDPATE: I've bumped versions to support Sequelize 4.x.**
+This version of `hapi-sequelize` should be compatible with Hapi 17.x & Sequelize 4.x. If you're
+encountering an issue related to any specific version please open an issue.
  
 ### Installation
 
@@ -25,7 +22,7 @@ Simply pass in your sequelize instance and a few basic options and voila. Option
 ```javascript
 server.register([
   {
-      register: require('hapi-sequelize'),
+      plugin: require('hapi-sequelize').plugin,
       options: [ 
         {
           name: 'dbname', // identifier
