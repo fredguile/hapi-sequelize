@@ -21,7 +21,7 @@ const user = process.env.MYSQL_USER || "root";
 const password = process.env.MYSQL_PASSWORD || "";
 
 lab.suite("@fredguile/hapi-sequelize", () => {
-  test("plugin works", { parallel: true }, done => {
+  test("plugin works", { parallel: true }, async () => {
     const server = new Hapi.Server();
 
     const sequelize = new Sequelize("shop", user, password, {
@@ -31,46 +31,41 @@ lab.suite("@fredguile/hapi-sequelize", () => {
       operatorsAliases: false
     });
 
-    const spy = Sinon.spy((sequelize) => server.log("onConnect called"));
+    const spy = Sinon.spy(sequelize => server.log("onConnect called"));
 
-    server
-      .register([
+    await server.register({
+      plugin: require("../lib"),
+      options: [
         {
-          plugin: require("../lib").plugin,
-          options: [
-            {
-              name: "shop",
-              models: ["./test/models/**/*.js"],
-              sequelize: sequelize,
-              sync: true,
-              forceSync: true,
-              onConnect: spy
-            }
-          ]
+          name: "shop",
+          models: ["./test/models/**/*.js"],
+          sequelize,
+          sync: true,
+          forceSync: true,
+          onConnect: spy
         }
-      ])
-      .then(() => {
-        expect(server.plugins["@fredguile/hapi-sequelize"]).to.exist();
+      ]
+    });
 
-        expect(
-          server.plugins["@fredguile/hapi-sequelize"]["shop"].sequelize
-        ).to.be.an.instanceOf(Sequelize);
+    expect(server.plugins["@fredguile/hapi-sequelize"]).to.exist();
 
-        expect(spy.getCall(0).args[0]).to.be.an.instanceOf(Sequelize);
+    expect(
+      server.plugins["@fredguile/hapi-sequelize"]["shop"].sequelize
+    ).to.be.an.instanceOf(Sequelize);
 
-        server.plugins["@fredguile/hapi-sequelize"]["shop"].sequelize
-          .query("show tables", { type: Sequelize.QueryTypes.SELECT })
-          .then(tables => {
-            expect(tables.length).to.equal(6);
-            done();
-          });
-      });
+    expect(spy.getCall(0).args[0]).to.be.an.instanceOf(Sequelize);
+
+    const tables = await server.plugins["@fredguile/hapi-sequelize"][
+      "shop"
+    ].sequelize.query("show tables", { type: Sequelize.QueryTypes.SELECT });
+
+    expect(tables.length).to.equal(6);
   });
 
   test(
     "plugin throws error when no models are found",
     { parallel: true },
-    done => {
+    async () => {
       const server = new Hapi.Server();
 
       const sequelize = new Sequelize("shop", user, password, {
@@ -80,25 +75,22 @@ lab.suite("@fredguile/hapi-sequelize", () => {
         operatorsAliases: false
       });
 
-      server
-        .register([
-          {
-            plugin: require("../lib").plugin,
-            options: [
-              {
-                name: "foo",
-                models: ["./foo/**/*.js"],
-                sequelize: sequelize,
-                sync: true,
-                forceSync: true
-              }
-            ]
-          }
-        ])
-        .catch(err => {
-          expect(err).to.exist();
-          done();
+      try {
+        await server.register({
+          plugin: require("../lib"),
+          options: [
+            {
+              name: "foo",
+              models: ["./foo/**/*.js"],
+              sequelize,
+              sync: true,
+              forceSync: true
+            }
+          ]
         });
+      } catch (err) {
+        expect(err).to.exist();
+      }
     }
   );
 });

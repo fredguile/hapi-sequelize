@@ -1,11 +1,12 @@
 {
   "name": "@fredguile/hapi-sequelize",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "A Hapi plugin for the fabulous Sequelize ORM",
   "main": "lib/index.js",
   "scripts": {
     "test": "lab --reporter junit --output report.xml",
-    "test-cov-html": "lab -a code -r html -o coverage.html -r lcov -o lcov.info",
+    "test-cov-html":
+      "lab -a code -r html -o coverage.html -r lcov -o lcov.info",
     "coverage-report": "cat lcov.info | coveralls",
     "lint": "eslint lib/*.js"
   },
