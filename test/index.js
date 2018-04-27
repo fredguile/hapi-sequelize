@@ -83,7 +83,7 @@ lab.suite("@fredguile/hapi-sequelize", () => {
       "shop"
     ].sequelize.query("show tables", { type: Sequelize.QueryTypes.SELECT });
 
-    expect(tables2.length).to.equal(5);
+    expect(tables2.length).to.equal(3);
   });
 
   test(
