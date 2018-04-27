@@ -21,19 +21,21 @@ or an array for multiple dbs.
 ```javascript
 await server.register({
   plugin: require("hapi-sequelize"),
-  options: [
-    {
-      name: "dbname", // identifier
-      models: ["./server/models/**/*.js"], // paths/globs to model files
-      sequelize: new Sequelize(config, opts), // sequelize instance
-      sync: true, // sync models - default false
-      forceSync: false, // force sync (drops tables) - default false
-      onConnect: function(sequelize) {
-        // Optional
-        // migrations, seeders, etc.
+  options: { 
+    instances: [
+      {
+        name: "dbname", // identifier
+        models: ["./server/models/**/*.js"], // paths/globs to model files
+        sequelize: new Sequelize(config, opts), // sequelize instance
+        sync: true, // sync models - default false
+        forceSync: false, // force sync (drops tables) - default false
+        onConnect: function(sequelize) {
+          // Optional
+          // migrations, seeders, etc.
+        }
       }
-    }
-  ]
+    ]
+  }
 });
 ```
 
