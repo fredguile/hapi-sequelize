@@ -6,7 +6,7 @@
   "scripts": {
     "test": "lab --reporter junit --output report.xml",
     "test-cov-html": "lab -a code -r html -o coverage.html -r lcov -o lcov.info",
-    "coverage-report": "cat lcov.info | coveralls",
+    "coverage-report": "cat lcov.info | npx coveralls",
     "lint": "eslint lib/*.js"
   },
   "repository": {
@@ -37,13 +37,13 @@
   },
   "devDependencies": {
     "code": "^5.2.0",
-    "coveralls": "^3.0.0",
+    "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
-    "hapi": "^17.3.1",
+    "hapi": "^17.4.0",
     "lab": "^15.4.1",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.6",
-    "sinon": "^4.5.0"
+    "sinon": "^5.0.3"
   },
   "peerDependencies": {
     "hapi": "^17.0.0",
