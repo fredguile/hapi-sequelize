@@ -1,6 +1,6 @@
 ## hapi-sequelize - a hapi plugin for the sequelize ORM
 
-[![Build Status](https://circleci.com/gh/fredguile/hapi-sequelize.svg?style=svg)](https://circleci.com/gh/fredguile/hapi-sequelize)
+[![Build Status](https://travis-ci.org/fredguile/hapi-sequelize.svg?branch=master)](https://travis-ci.org/fredguile/hapi-sequelize)
 [![Coverage Status](https://coveralls.io/repos/github/fredguile/hapi-sequelize/badge.svg)](https://coveralls.io/github/fredguile/hapi-sequelize)
 [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/@fredguile/hapi-sequelize)
 
