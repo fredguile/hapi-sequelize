@@ -21,6 +21,44 @@ const user = process.env.MYSQL_USER || "root";
 const password = process.env.MYSQL_PASSWORD || "";
 
 lab.suite("@fredguile/hapi-sequelize", () => {
+  test("plugin works with one instance", { parallel: true }, async () => {
+    const server = new Hapi.Server();
+    const spy = Sinon.spy(sequelize => server.log("onConnect called"));
+
+    await server.register({
+      plugin: require("../lib"),
+      options: {
+        instances: {
+          name: "single",
+          models: ["./test/models/blog/*.js"],
+          sequelize: new Sequelize("blog", user, password, {
+            host,
+            port,
+            dialect: "mysql",
+            operatorsAliases: false
+          }),
+          sync: true,
+          forceSync: true,
+          onConnect: spy
+        }
+      }
+    });
+
+    expect(server.plugins["@fredguile/hapi-sequelize"]).to.exist();
+
+    expect(
+      server.plugins["@fredguile/hapi-sequelize"]["single"].sequelize
+    ).to.be.an.instanceOf(Sequelize);
+
+    expect(spy.getCall(0).args[0]).to.be.an.instanceOf(Sequelize);
+
+    const tables = await server.plugins["@fredguile/hapi-sequelize"][
+      "single"
+    ].sequelize.query("show tables", { type: Sequelize.QueryTypes.SELECT });
+
+    expect(tables.length).to.equal(3);
+  });
+
   test("plugin works with multiple instances", { parallel: true }, async () => {
     const server = new Hapi.Server();
     const spy = Sinon.spy(sequelize => server.log("onConnect called"));
